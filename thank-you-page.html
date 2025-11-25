@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grazie per il tuo acquisto! - Come Mantenere Pulito l'Interno Auto</title>
+    <meta name="description" content="Grazie per l'acquisto! Scarica subito la tua guida completa. Offerta speciale: "Guida Express: 10 Prodotti Indispensabili" solo 4,90€!">
+    
+    <!-- Schema.org for Thank You Page -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Pagina Ringraziamento - Come Mantenere Pulito l'Interno Auto",
+        "description": "Pagina di conferma acquisto e download della guida per pulizia interni auto",
+        "url": "/thank_you_page.html"
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .thank-you-section {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .thank-you-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: bounce 1s ease-in-out;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+        
+        .thank-you-title {
+            font-size: 3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .thank-you-message {
+            font-size: 1.4em;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .download-section {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 2px dashed #667eea;
+        }
+        
+        .download-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .download-description {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            margin: 10px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+        
+        .bonus-offer {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bonus-offer::before {
+            content: '🔥';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 2em;
+            animation: pulse 2s infinite;
+        }
+        
+        .bonus-offer::after {
+            content: '⚡';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2em;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .bonus-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .bonus-title {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .bonus-description {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .bonus-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .bonus-feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .bonus-feature-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .bonus-feature-text {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        .price-section {
+            margin: 30px 0;
+        }
+        
+        .original-price {
+            font-size: 1.5em;
+            text-decoration: line-through;
+            opacity: 0.8;
+            margin-right: 20px;
+        }
+        
+        .sale-price {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .bonus-btn {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #333;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.4em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            display: inline-block;
+            margin: 20px 10px;
+        }
+        
+        .bonus-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+        }
+        
+        .urgency-timer {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            animation: glow 2s infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
+        }
+        
+        .guarantee-section {
+            background: #f0f8ff;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            border-left: 5px solid #4CAF50;
+        }
+        
+        .guarantee-title {
+            font-size: 1.5em;
+            color: #4CAF50;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .guarantee-text {
+            font-size: 1.1em;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .support-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .support-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .support-text {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .support-contact {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .thank-you-section {
+                padding: 40px 20px;
+            }
+            
+            .thank-you-title {
+                font-size: 2.2em;
+            }
+            
+            .thank-you-message {
+                font-size: 1.2em;
+            }
+            
+            .bonus-title {
+                font-size: 1.8em;
+            }
+            
+            .bonus-description {
+                font-size: 1.1em;
+            }
+            
+            .bonus-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-btn, .bonus-btn {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Thank You Section -->
+        <section class="thank-you-section">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+            </div>
+            
+            <h1 class="thank-you-title">GRAZIE PER L'ACQUISTO!</h1>
+            
+            <p class="thank-you-message">
+                🎉 La tua guida <strong>"Come Mantenere Pulito l'Interno Auto"</strong> è stata acquistata con successo!<br>
+                Hai fatto un ottimo investimento per la tua auto e la tua sicurezza.
+            </p>
+            
+            <!-- Download Section -->
+            <div class="download-section">
+                <h2 class="download-title">📧 LA TUA GUIDA È IN ARRIVO VIA EMAIL!</h2>
+                <p class="download-description">
+                    <strong>🎉 Abbiamo appena inviato la tua guida!</strong><br>
+                    Il tuo ebook completo con tutte le tecniche professionali per mantenere pulito l'interno della tua auto. 
+                    15 capitoli dettagliati + Bonus esclusivi!
+                </p>
+                
+                <!-- Email Instructions -->
+                <div style="background: #e8f5e8; padding: 25px; border-radius: 10px; margin: 25px 0; border-left: 4px solid #4CAF50; text-align: center;">
+                    <h4 style="color: #2E7D32; margin-bottom: 15px; font-size: 1.3em;">✉️ DAI CONTROLLARE LA TUA EMAIL</h4>
+                    <p style="color: #1B5E20; line-height: 1.6; margin-bottom: 15px;">
+                        <strong>Controlla la tua casella di posta</strong> (anche cartella spam/promozioni) per il link di download personalizzato.
+                    </p>
+                    <div style="background: rgba(255,255,255,0.8); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <strong style="color: #1976D2;">🔐 Cosa troverai nell'email:</strong><br>
+                        <span style="color: #333;">Link personalizzato + Watermark con il tuo nome + Scadenza 72 ore</span>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin: 25px 0;">
+                    <a href="/cdn-cgi/l/email-protection#2e5d5b5e5e415c5a6e5f5b47405a4f4a47434b405d4741404b00475a115d5b4c444b4d5a136041400e46410e5c474d4b585b5a410e424f0e495b474a4f084c414a57136d474f41020e4041400e46410e4f404d415c4f0e5c474d4b585b5a410e42094b434f47420e4d41400e47420e424740450e5e4b5c0e5d4d4f5c474d4f5c4b0e424f0e43474f0e495b474a4f000e7e415a4b5a4b0e4f475b5a4f5c4347110e695c4f54474b0f" class="download-btn" style="background: linear-gradient(135deg, #4CAF50, #45a049); font-size: 1.1em; padding: 15px 30px;">
+                        ✉️ NON HAI RICEVUTO L'EMAIL?
+                    </a>
+                </div>
+                
+                <!-- Info Download Security -->
+                <div style="background: #fff3cd; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #ffc107;">
+                    <h4 style="color: #856404; margin-bottom: 10px;">⚠️ Importante da ricordare:</h4>
+                    <ul style="text-align: left; color: #333; line-height: 1.8;">
+                        <li>📝 <strong>Watermark personalizzato:</strong> La guida includerà il tuo nome e email per protezione copyright</li>
+                        <li>⏰ <strong>Validità link:</strong> Link valido per 72 ore, poi scade automaticamente</li>
+                        <li>💾 <strong>Backup sicuro:</strong> Salva la guida su dispositivo personale (hard disk, cloud)</li>
+                        <li>🔒 <strong>Non condividere:</strong> Il link è personale e tracciato per la tua protezione</li>
+                        <li>📧 <strong>Non trovata?:</strong> Controlla cartella spam/promozioni o contattaci via email</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bonus Offer -->
+            <div class="bonus-offer">
+                <div class="bonus-badge">🎁 OFFERTA LIMITATA - SOLO PER TE</div>
+                <h2 class="bonus-title">COMPLETA LA TUA COLLEZIONE!</h2>
+                <p class="bonus-description">
+                    <strong>Guida Express:</strong> "I 10 Prodotti Indispensabili per Auto Sempre Pulite"<br>
+                    <em>La lista definitiva dei migliori prodotti con recensioni, prezzi e dove comprarli!</em>
+                </p>
+                
+                <div class="bonus-features">
+                    <div class="bonus-feature">
+                        <div class="bonus-feature-icon">🛒</div>
+                        <div class="bonus-feature-text"><strong>Lista Curata</strong><br>10 prodotti top testati per te</div>
+                    </div>
+                    <div class="bonus-feature">
+                        <div class="bonus-feature-icon">💰</div>
+                        <div class="bonus-feature-text"><strong>Prezzi & Links</strong><br>Dove comprare con migliori offerte</div>
+                    </div>
+                    <div class="bonus-feature">
+                        <div class="bonus-feature-icon">⚡</div>
+                        <div class="bonus-feature-text"><strong>Guida Rapida</strong><br>Come usare ogni prodotto correttamente</div>
+                    </div>
+                    <div class="bonus-feature">
+                        <div class="bonus-feature-icon">📊</div>
+                        <div class="bonus-feature-text"><strong>Tabelle Comparative</strong><br>Qualità/Prezzo per scegliere al meglio</div>
+                    </div>
+                </div>
+                
+                <div class="price-section">
+                    <span class="original-price">€19,90</span>
+                    <span class="sale-price">€4,90</span>
+                </div>
+                
+                <div class="urgency-timer">
+                    ⏰ <strong>Offerta valida per le prossime 2 ore!</strong> 
+                </div>
+                
+                <a href="checkout.html?product=guida-prodotti" class="bonus-btn">
+                    🛒 AGGIUNGI ALLA TUA COLLEZIONE - €4,90
+                </a>
+                
+                <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.9;">
+                    💳 Acquiato sicuro • ⚡ Download immediato • 🔒 Garanzia 7 giorni • 🔐 Protezione watermarking
+                </p>
+            </div>
+            
+            <!-- Guarantee -->
+            <div class="guarantee-section">
+                <div class="guarantee-title">🛡️ GARANZIA SODDISFATTI O RIMBORSATI</div>
+                <div class="guarantee-text">
+                    <strong>7 giorni per valutare</strong> - Rimborso completo entro 7 giorni dall'acquisto se non completamente soddisfatto.<br><br>
+                    <strong>📋 Politica Anti-Abuso:</strong><br>
+                    ✅ Garanzia valida solo per 7 giorni<br>
+                    ✅ Massimo 3 download per account<br>
+                    ✅ Link personale con watermark<br>
+                    ✅ ID ordine univoco per tracking<br>
+                    ⚠️ <em>Prodotti digitali non rimborsabili dopo 7 giorni o se già scaricati</em>
+                </div>
+            </div>
+            
+            <!-- Support -->
+            <div class="support-section">
+                <h3 class="support-title">🙋‍♂️ HAI BISOGNO DI AIUTO?</h3>
+                <p class="support-text">
+                    Il nostro team è qui per supportarti. Se hai domande sulla tua guida o hai bisogno di assistenza tecnica, 
+                    non esitare a contattarci!
+                </p>
+                <a href="/cdn-cgi/l/email-protection#c7b4b2b7b7a8b5b387b6b2aea9b3a6a3aeaaa2a9b4aea8a9a2e9aeb3" class="support-contact">
+                    📧 <span class="__cf_email__" data-cfemail="dba8aeababb4a9af9baaaeb2b5afbabfb2b6beb5a8b2b4b5bef5b2af">[email&#160;protected]</span>
+                </a>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 QUINTA DIMENSIONE srls. Tutti i diritti riservati.</p>
+            <p>
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Termini di Servizio</a> | 
+                <a href="/cdn-cgi/l/email-protection#c8a1a6aea788b9bda1a6bca9aca1a5ada6bba1a7a6ade6a1bc">Contatti</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Timer countdown per urgenza
+        function createUrgencyTimer() {
+            const timerContainer = document.querySelector('.urgency-timer');
+            if (timerContainer) {
+                let timeLeft = 120; // 2 ore
+                
+                setInterval(() => {
+                    const hours = Math.floor(timeLeft / 3600);
+                    const minutes = Math.floor((timeLeft % 3600) / 60);
+                    const seconds = timeLeft % 60;
+                    
+                    timerContainer.innerHTML = `⏰ <strong>Offerta valida per le prossime ${hours}h ${minutes}m ${seconds}s!</strong>`;
+                    
+                    if (timeLeft <= 0) {
+                        timeLeft = 120; // Reset timer
+                    } else {
+                        timeLeft--;
+                    }
+                }, 1000);
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createUrgencyTimer();
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
