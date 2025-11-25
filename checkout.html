@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Come Mantenere Pulito l'Interno Auto 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+            color: #111827;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .header {
+            background: #FFFFFF;
+            padding: 32px 0;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            text-align: center;
+        }
+
+        .checkout-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+
+        .checkout-subtitle {
+            font-size: 16px;
+            color: #6E7A8A;
+        }
+
+        /* Timer Section */
+        .timer-section {
+            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+            color: white;
+            padding: 24px 0;
+            text-align: center;
+        }
+
+        .timer-label {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .timer-display {
+            font-size: 36px;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+        }
+
+        .timer-expired {
+            font-size: 24px;
+            font-weight: 700;
+            display: none;
+        }
+
+        /* Checkout Form */
+        .checkout {
+            padding: 64px 0;
+            background: #FFFFFF;
+        }
+
+        .offer-card {
+            background: #FFFFFF;
+            border: 2px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 48px;
+            margin-bottom: 32px;
+            position: relative;
+            box-shadow: 0px 12px 24px -4px rgba(0, 95, 249, 0.1), 0px 8px 16px -4px rgba(17, 24, 39, 0.06);
+        }
+
+        .offer-card.premium {
+            border: 2px solid #005FF9;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F0F8FF 100%);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #005FF9 0%, #003DCC 100%);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .offer-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .offer-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #111827;
+        }
+
+        .offer-description {
+            font-size: 16px;
+            color: #6E7A8A;
+            line-height: 1.6;
+        }
+
+        .offer-features {
+            margin: 32px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+
+        .feature-icon {
+            color: #10B981;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .pricing {
+            background: #F8F9FA;
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 32px 0;
+        }
+
+        .price-comparison {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .original-price {
+            font-size: 20px;
+            color: #6E7A8A;
+            text-decoration: line-through;
+        }
+
+        .discount-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: #005FF9;
+        }
+
+        .savings {
+            background: #10B981;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .checkout-button {
+            width: 100%;
+            background: #005FF9;
+            color: white;
+            padding: 20px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 250ms ease;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .checkout-button:hover {
+            background: #003DCC;
+            transform: translateY(-2px);
+        }
+
+        .checkout-button.secondary {
+            background: #F3F4F6;
+            color: #6E7A8A;
+            border: 2px solid #E5E7EB;
+        }
+
+        .checkout-button.secondary:hover {
+            background: #E5E7EB;
+            color: #374151;
+        }
+
+        /* Basic Offer Card */
+        .basic-offer {
+            border: 2px solid #E5E7EB;
+        }
+
+        .basic-offer .offer-title {
+            color: #374151;
+        }
+
+        .basic-offer .pricing {
+            background: #F9FAFB;
+        }
+
+        /* Expiry Message */
+        .expiry-message {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            border: 2px solid #F59E0B;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 32px;
+            display: none;
+        }
+
+        .expiry-message h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #92400E;
+            margin-bottom: 12px;
+        }
+
+        .expiry-message p {
+            color: #78350F;
+            font-size: 16px;
+        }
+
+        /* Guarantees */
+        .guarantees {
+            background: #F8F9FA;
+            padding: 32px;
+            border-radius: 12px;
+            margin-top: 32px;
+        }
+
+        .guarantee-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: #6E7A8A;
+        }
+
+        .guarantee-icon {
+            color: #10B981;
+            font-weight: bold;
+        }
+
+        /* Audio Player Mockup */
+        .audio-mockup {
+            background: #111827;
+            border-radius: 12px;
+            padding: 24px;
+            color: white;
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .audio-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .audio-description {
+            background: #1F2937;
+            border-radius: 8px;
+            padding: 12px;
+            border-left: 3px solid #005FF9;
+            margin-bottom: 16px;
+            text-align: left;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .audio-player {
+            background: #374151;
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .play-button {
+            width: 48px;
+            height: 48px;
+            background: #005FF9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 200ms ease;
+        }
+
+        .play-button:hover {
+            background: #003DCC;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 4px;
+            background: #6B7280;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #10B981;
+            width: 23%;
+            transition: width 200ms ease;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px; /* Aumentato padding per mobile */
+            }
+
+            .header {
+                padding: 36px 0; /* Aumentato padding per dare più spazio al contenuto */
+            }
+
+            .checkout-title {
+                font-size: 24px; /* Ridotto per mobile */
+                margin-bottom: 12px;
+            }
+
+            .checkout-subtitle {
+                font-size: 14px;
+            }
+
+            .timer-section {
+                padding: 20px 0; /* Ridotto per mobile */
+            }
+
+            .timer-label {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+
+            .timer-display {
+                font-size: 24px; /* Ridotto per mobile */
+            }
+
+            .checkout {
+                padding: 48px 0; /* Ridotto per mobile */
+            }
+
+            .offer-card {
+                padding: 24px 20px; /* Più padding laterale, meno verticale */
+                margin-bottom: 24px;
+            }
+
+            .offer-title {
+                font-size: 22px; /* Ridotto per mobile */
+                margin-bottom: 12px;
+            }
+
+            .offer-description {
+                font-size: 14px;
+                margin-bottom: 24px;
+            }
+
+            .price-comparison {
+                flex-direction: column;
+                gap: 12px;
+                margin-bottom: 20px;
+            }
+
+            .original-price {
+                font-size: 16px;
+            }
+
+            .discount-price {
+                font-size: 24px;
+            }
+
+            .savings {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
+            .checkout-button {
+                font-size: 16px;
+                padding: 16px;
+                margin-bottom: 12px;
+            }
+
+            .feature-item {
+                font-size: 14px;
+                margin-bottom: 12px;
+            }
+
+            .audio-mockup {
+                padding: 20px 16px; /* Più padding laterale */
+                margin: 20px 0;
+            }
+
+            .audio-title {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+
+            .audio-description {
+                font-size: 13px;
+                padding: 10px;
+                margin-bottom: 12px;
+            }
+
+            .guarantees {
+                padding: 24px 16px; /* Più padding laterale */
+                margin-top: 24px;
+            }
+
+            .guarantee-item {
+                font-size: 13px;
+                margin-bottom: 12px;
+            }
+
+            .expiry-message {
+                padding: 20px 16px;
+                margin-bottom: 24px;
+            }
+
+            /* Footer mobile */
+            footer {
+                padding: 32px 0 !important;
+                margin-top: 48px !important;
+            }
+
+            footer .container {
+                padding: 0 20px !important;
+            }
+
+            footer div {
+                margin-bottom: 20px !important;
+            }
+
+            footer a {
+                font-size: 13px !important;
+                margin: 0 8px !important;
+            }
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .offer-card.premium {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes countdown {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .timer-display {
+            animation: countdown 1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="checkout-title">Completa il Tuo Acquisto</h1>
+                <p class="checkout-subtitle">Scegli l'opzione che preferisci per iniziare subito</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Timer Section -->
+    <section class="timer-section" id="timerSection">
+        <div class="container">
+            <div class="timer-label">⏰ OFFERTA SPECIALE SCADE TRA:</div>
+            <div class="timer-display" id="timerDisplay">09:59</div>
+            <div class="timer-expired" id="timerExpired">Offerta scaduta</div>
+        </div>
+    </section>
+
+    <!-- Checkout -->
+    <section class="checkout">
+        <div class="container">
+            <!-- Expiry Message -->
+            <div class="expiry-message" id="expiryMessage">
+                <h3>⏰ L'Offerta Speciale è Scaduta</h3>
+                <p>Ora puoi acquistare solo l'ebook PDF a prezzo regolare di 27€</p>
+            </div>
+
+            <!-- Premium Offer -->
+            <div class="offer-card premium" id="premiumOffer">
+                <div class="popular-badge">⭐ PIÙ SCELTO</div>
+                
+                <div class="offer-header">
+                    <h2 class="offer-title">🎧 Package Completo: Ebook + Audiolibro</h2>
+                    <p class="offer-description">
+                        Ottieni l'ebook completo + l'audiolibro professionale. Perfetto per chi vuole imparare 
+                        anche durante i viaggi in auto o mentre fa sport.
+                    </p>
+                </div>
+
+                <div class="audio-mockup">
+                    <div class="audio-title">🎧 Anteprima Audiolibro (90 secondi)</div>
+                    <div class="audio-description" style="font-size: 14px; color: #9CA3AF; margin-bottom: 16px; font-style: italic;">
+                        "Ciao, amico automobilista! Hai mai pensato a quanto tempo trascorri dentro la tua auto? Per molti di noi, l'auto è diventata una vera e propria seconda casa..."
+                    </div>
+                    <div class="audio-player">
+                        <div class="play-button" id="playButton">▶</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div style="font-size: 14px;"><span id="currentTime">0:00</span> / 1:30</div>
+                    </div>
+                    <div style="font-size: 12px; color: #6E7A8A; margin-top: 8px; text-align: center;">
+                        🎙️ Voce maschile professionale italiana • 90 secondi di anteprima
+                    </div>
+                </div>
+
+                <div class="offer-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span><strong>Ebook PDF completo</strong> - 120+ pagine di contenuti professionali</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span><strong>Audiolibro professionale</strong> - 3+ ore di contenuti narrati</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span><strong>Download immediato</strong> - Accedi subito dopo il pagamento</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span><strong>Compatibile ovunque</strong> - Smartphone, tablet, computer</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span><strong>Audio di alta qualità</strong> - Voce professionale, cristallina</span>
+                    </div>
+                </div>
+
+                <div class="pricing">
+                    <div class="price-comparison">
+                        <span class="original-price">53€</span>
+                        <span class="discount-price">40€</span>
+                        <span class="savings">Risparmi 13€</span>
+                    </div>
+                    <div style="font-size: 14px; color: #6E7A8A;">Solo per 10 minuti!</div>
+                </div>
+
+                <button class="checkout-button" onclick="selectPlan('premium')">
+                    ✅ SÌ, LO VOGLIO! - 40€
+                    <span>→</span>
+                </button>
+            </div>
+
+            <!-- Basic Offer -->
+            <div class="offer-card basic-offer" id="basicOffer">
+                <div class="offer-header">
+                    <h2 class="offer-title">📄 Solo Ebook PDF</h2>
+                    <p class="offer-description">
+                        La guida completa in formato PDF. Perfetto per leggere sul tuo dispositivo preferito 
+                        e avere sempre a portata di mano tutti i consigli.
+                    </p>
+                </div>
+
+                <div class="offer-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span><strong>Ebook PDF completo</strong> - 120+ pagine di contenuti professionali</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span><strong>Download immediato</strong> - Accedi subito dopo il pagamento</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span><strong>Versione DOCX inclusa</strong> - Modificabile se necessario</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span><strong>Aggiornamenti gratuiti</strong> - Ricevi le nuove edizioni</span>
+                    </div>
+                </div>
+
+                <div class="pricing">
+                    <div class="discount-price" id="basicPrice">27€</div>
+                    <div style="font-size: 14px; color: #6E7A8A; margin-top: 8px;">Prezzo standard</div>
+                </div>
+
+                <button class="checkout-button secondary" onclick="selectPlan('basic')">
+                    📄 Acquista solo la guida - 27€
+                    <span>→</span>
+                </button>
+            </div>
+
+            <!-- Guarantees -->
+            <div class="guarantees">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px; color: #111827;">
+                    🛡️ Garanzie e Sicurezza
+                </h3>
+                <div class="guarantee-item">
+                    <span class="guarantee-icon">🔒</span>
+                    <span>Pagamento sicuro SSL 256-bit</span>
+                </div>
+                <div class="guarantee-item">
+                    <span class="guarantee-icon">💰</span>
+                    <span>Garanzia rimborso 30 giorni</span>
+                </div>
+                <div class="guarantee-item">
+                    <span class="guarantee-icon">📞</span>
+                    <span>Supporto clienti 24/7</span>
+                </div>
+                <div class="guarantee-item">
+                    <span class="guarantee-icon">⚡</span>
+                    <span>Download immediato dopo il pagamento</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Footer -->
+    <footer style="background: #FFFFFF; padding: 48px 0; border-top: 1px solid #E5E7EB; margin-top: 64px;">
+        <div class="container">
+            <!-- Company Info -->
+            <div style="text-align: center; margin-bottom: 32px;">
+                <div style="font-size: 14px; color: #6E7A8A; margin-bottom: 16px;">
+                    <strong style="color: #111827;">QUINTA DIMENSIONE srls</strong><br>
+                    P. IVA: 05282450260<br>
+                    <small style="font-size: 12px;">Copywriter: MiniMax Agent • 2025</small>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <div style="text-align: center; margin-bottom: 24px;">
+                <a href="landing_page_ebook.html" style="color: #005FF9; text-decoration: none; font-size: 14px; font-weight: 500; margin: 0 16px;">
+                    ← Torna alla descrizione
+                </a>
+            </div>
+
+            <!-- Legal Links -->
+            <div style="text-align: center; border-top: 1px solid #E5E7EB; padding-top: 24px;">
+                <a href="privacy_policy.html" style="color: #6E7A8A; text-decoration: none; font-size: 12px; margin: 0 12px;">
+                    Privacy Policy
+                </a>
+                <span style="color: #D1D5DB; margin: 0 8px;">|</span>
+                <a href="cookie_policy.html" style="color: #6E7A8A; text-decoration: none; font-size: 12px; margin: 0 12px;">
+                    Cookie Policy
+                </a>
+            </div>
+
+            <style>
+                footer a:hover {
+                    color: #374151 !important;
+                }
+                footer strong {
+                    color: #111827 !important;
+                }
+            </style>
+        </div>
+    </footer>
+
+    <script>
+        // Timer functionality
+        function initializeTimer() {
+            const timerDisplay = document.getElementById('timerDisplay');
+            const timerExpired = document.getElementById('timerExpired');
+            const timerSection = document.getElementById('timerSection');
+            const premiumOffer = document.getElementById('premiumOffer');
+            const expiryMessage = document.getElementById('expiryMessage');
+
+            // Get remaining time from localStorage or set to 10 minutes
+            let remainingTime = localStorage.getItem('checkoutTimer');
+            if (!remainingTime) {
+                remainingTime = 10 * 60; // 10 minutes in seconds
+                localStorage.setItem('checkoutTimer', remainingTime);
+            } else {
+                remainingTime = parseInt(remainingTime);
+            }
+
+            function updateTimer() {
+                if (remainingTime <= 0) {
+                    // Timer expired
+                    timerDisplay.style.display = 'none';
+                    timerExpired.style.display = 'block';
+                    timerSection.style.background = 'linear-gradient(135deg, #6B7280 0%, #4B5563 100%)';
+                    premiumOffer.style.display = 'none';
+                    expiryMessage.style.display = 'block';
+                    localStorage.removeItem('checkoutTimer');
+                    return;
+                }
+
+                const minutes = Math.floor(remainingTime / 60);
+                const seconds = remainingTime % 60;
+                timerDisplay.textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                remainingTime--;
+                localStorage.setItem('checkoutTimer', remainingTime);
+            }
+
+            // Update timer immediately and then every second
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+
+        // Audio player mockup
+        function initializeAudioPlayer() {
+            const playButton = document.getElementById('playButton');
+            const progressFill = document.getElementById('progressFill');
+            const currentTimeDisplay = document.getElementById('currentTime');
+            let isPlaying = false;
+            let progress = 0;
+            let timeElapsed = 0;
+            const totalDuration = 90; // 90 seconds
+
+            playButton.addEventListener('click', () => {
+                isPlaying = !isPlaying;
+                playButton.textContent = isPlaying ? '⏸' : '▶';
+                
+                if (isPlaying) {
+                    // Simulate audio progress
+                    const interval = setInterval(() => {
+                        if (!isPlaying) {
+                            clearInterval(interval);
+                            return;
+                        }
+                        timeElapsed++;
+                        progress = (timeElapsed / totalDuration) * 100;
+                        
+                        // Update displays
+                        progressFill.style.width = progress + '%';
+                        const minutes = Math.floor(timeElapsed / 60);
+                        const seconds = timeElapsed % 60;
+                        currentTimeDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                        
+                        if (timeElapsed >= totalDuration) {
+                            progress = 100;
+                            playButton.textContent = '▶';
+                            isPlaying = false;
+                            currentTimeDisplay.textContent = '1:30';
+                            progressFill.style.width = '100%';
+                            clearInterval(interval);
+                        }
+                    }, 1000);
+                }
+            });
+        }
+
+        // Plan selection
+        function selectPlan(plan) {
+            if (plan === 'premium') {
+                const confirmation = confirm(
+                    "🎧 CONFERMA ACQUISTO PACKAGE COMPLETO\n\n" +
+                    "Cosa riceverai:\n" +
+                    "• Ebook PDF completo (120+ pagine)\n" +
+                    "• Audiolibro professionale (3+ ore)\n" +
+                    "• Download immediato\n\n" +
+                    "Prezzo: 40€\n\n" +
+                    "Procedere al pagamento?"
+                );
+                
+                if (confirmation) {
+                    // Redirect to payment (replace with actual payment URL)
+                    alert("🚀 Reindirizzamento al sistema di pagamento sicuro...\n\nVerrà effettuato un addebito di 40€ per il Package Completo.");
+                    // window.location.href = "YOUR_PAYMENT_URL_HERE";
+                }
+            } else {
+                const confirmation = confirm(
+                    "📄 CONFERMA ACQUISTO EBOOK\n\n" +
+                    "Cosa riceverai:\n" +
+                    "• Ebook PDF completo (120+ pagine)\n" +
+                    "• Versione DOCX modificabile\n" +
+                    "• Download immediato\n\n" +
+                    "Prezzo: 27€\n\n" +
+                    "Procedere al pagamento?"
+                );
+                
+                if (confirmation) {
+                    // Redirect to payment (replace with actual payment URL)
+                    alert("🚀 Reindirizzamento al sistema di pagamento sicuro...\n\nVerrà effettuato un addebito di 27€ per l'Ebook PDF.");
+                    // window.location.href = "YOUR_PAYMENT_URL_HERE";
+                }
+            }
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeTimer();
+            initializeAudioPlayer();
+        });
+
+        // Save timer on page unload
+        window.addEventListener('beforeunload', () => {
+            // Timer is automatically saved by the interval function
+        });
+    </script>
+</body>
+</html>
